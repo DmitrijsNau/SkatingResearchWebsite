@@ -17,13 +17,6 @@ app = Flask(__name__)
 
 @app.route("/", methods=["POST", "GET"])
 def default_page():
-    if request.method == "POST":
-        video = request.files["file"]
-        if video:
-            filename = secure_filename(video.filename)
-            video.save(os.path.join("/data2/dmitrijs", video.filename))
-        else:
-            return redirect(request.url)
     return render_template("index.html", mimetype="text/html")
 
 
@@ -46,6 +39,15 @@ def display_image(image_name):
 def default_page_script():
     return send_file("templates/script.js", mimetype="text/javascript")
 
+@app.route('/upload',methods=['POST','GET'])
+def upload():
+    if request.method =='POST':
+        video = request.files['file']
+        if video:
+            filename = secure_filename(video.filename)
+            video.save(os.path.join("/data2/dmitrijs", filename))
+            return render_template('index.html')
+        return render_template('index.html')
 
 # Press the green button in the gutter to run the script.
 if __name__ == "__main__":
