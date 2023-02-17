@@ -45,7 +45,7 @@ def upload():
         video = request.files['file']
         if video:
             filename = secure_filename(video.filename)
-            video.save(os.path.join("/Users/skate/Documents", filename))
+            video.save(os.path.join("/data2/dmitrijs", filename))
             return "success!"
         return "Please try again later, and let the team know the upload failed"
 
