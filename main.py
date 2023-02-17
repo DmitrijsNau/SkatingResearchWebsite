@@ -45,9 +45,9 @@ def upload():
         video = request.files['file']
         if video:
             filename = secure_filename(video.filename)
-            video.save(os.path.join("/data2/dmitrijs", filename))
-            return render_template('index.html')
-        return render_template('index.html')
+            video.save(os.path.join("/Users/skate/Documents", filename))
+            return "success!"
+        return "Please try again later, and let the team know the upload failed"
 
 # Press the green button in the gutter to run the script.
 if __name__ == "__main__":
