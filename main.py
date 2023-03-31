@@ -29,6 +29,9 @@ def default_page_style():
 def team_page():
     return render_template("teampage.html", mimetype="text/html")
 
+@app.route("/terms.html")
+def terms_page():
+    return render_template("terms.html", mimetype="text/html")
 
 @app.route("/<image_name>")
 def display_image(image_name):
